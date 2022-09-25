@@ -97,7 +97,7 @@ func OSGB36toWGS84(E, N float64) (float64, float64) {
 
 	var nu_2 float64
 	for math.Abs(lat-latold) > math.Pow(10, -16) {
-		latold = lat
+		lat, latold = latold, lat
 		nu_2 = a_2 / math.Sqrt(1-e2_2*math.Pow(math.Sin(latold), 2))
 		lat = math.Atan2(z_2+e2_2*nu_2*math.Sin(latold), p)
 	}
